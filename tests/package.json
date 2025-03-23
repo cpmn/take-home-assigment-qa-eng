@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "cypress": "^14.2.0",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "start": "cypress open",
+    "cypress:open": "cypress open"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.14.0"
+  }
+}
