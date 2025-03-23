@@ -49,14 +49,21 @@ export const NewModalView: React.FC<NewModalViewProps> = ({
       onClose={onClose}
       title={`Create a Query | ${data.question}`}
       centered
+      data-testid="new-query-modal"
     >
       <Textarea
         placeholder="Add a new remark"
         value={description}
         onChange={event => setDescription(event.target.value)}
+        data-testid="query-textarea"
       />
       <Space h="md" />
-      <Button fullWidth onClick={handleSubmit} loading={loading}>
+      <Button 
+        fullWidth 
+        onClick={handleSubmit}
+        loading={loading}
+        data-testid="create-query-button"
+      >
         Create
       </Button>
     </Modal>

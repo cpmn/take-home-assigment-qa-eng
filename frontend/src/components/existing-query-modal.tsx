@@ -65,39 +65,40 @@ export const ExistingQueryModal: React.FC<ExistingModalViewProps> = ({
       onClose={onClose}
       title={`Query | ${data.title}`}
       centered
+      data-testid="existing-query-modal"
     >
-      <div className={classes.header}>
+      <div className={classes.header} data-testid="query-header">
         <div className={classes.header_content}>
           <Text size="sm" c="dimmed">
             Query Status
           </Text>
-          <Text>{data.status}</Text>
+          <Text data-testid="query-status-txt">{data.status}</Text>
         </div>
         <div className={classes.header_content}>
           <Text size="sm" c="dimmed">
             Created At
           </Text>
-          <Text>{getDate(data.createdAt)}</Text>
+          <Text data-testid="query-created-at">{getDate(data.createdAt)}</Text>
         </div>
       </div>
       <Divider my="md" />
-      <div className="description">
+      <div className="description"  data-testid="query-description">
         <div className="updated_at">
           <Text size="sm" c="dimmed">
             Updated At
           </Text>
-          <Text>{getDate(data.updatedAt)}</Text>
+          <Text data-testid="query-updated-at-txt">{getDate(data.updatedAt)}</Text>
         </div>
-        <Text>{data.description}</Text>
+        <Text data-testid="query-description-txt">{data.description}</Text>
       </div>
       <Space h="md" />
       <div className={classes.buttons}>
         {data.status === Status.OPEN && (
-          <Button onClick={handleResolveSubmit} loading={loading}>
+          <Button onClick={handleResolveSubmit} loading={loading} data-testid="resolve-query-button">
             Resolve
           </Button>
         )}
-        <Button onClick={handleDeleteSubmit} loading={loading} color="red">
+        <Button onClick={handleDeleteSubmit} loading={loading} color="red" data-testid="delete-query-button">
           Delete
         </Button>
       </div>
