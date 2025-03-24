@@ -19,6 +19,9 @@ import './utils'
 import 'cypress-real-events/support'
 import queryApiService from './QueryApiService';
 
+//mochawesome reporting
+import 'cypress-mochawesome-reporter/register'
+
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from failing the test
     return false;
@@ -31,8 +34,10 @@ Cypress.on('uncaught:exception', (err, runnable) => {
         resolveQueryWithFixture(requestFixture: string, dataFixture: string): Chainable<any>;
         deleteAllQueriesCreated(queryIds: string[]): Chainable<any>;
         getIdInQueryResponse(formDataId: string): Chainable<any>;
+        deleteAllQueriesInTable(): Chainable<any>;
       }
     }
+
   }
 
   Cypress.Commands.add('addQueryWithFixture', (dataFixture: string) => {
@@ -59,4 +64,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
   Cypress.Commands.add('getIdInQueryResponse', (formDataId: string) => {    
     return queryApiService.findQueryByQueryId(formDataId);
-}); 
+  }); 
+
+  Cypress.Commands.add('deleteAllQueriesInTable', () => {    
+    queryApiService.extractAllQueryIds().then((queryIds) => {   
+      return queryApiService.deleteQueries(queryIds);
+    });
+  }); 
+
+  

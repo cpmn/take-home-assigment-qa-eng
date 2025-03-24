@@ -64,7 +64,7 @@ export class QueryApiService {
     }
 
 
-    findQueryByQueryId(queryId: string, attribute: string): Cypress.Chainable<any> {
+    findQueryByQueryId(queryId: string): Cypress.Chainable<any> {
       return this.getQueries().then((response) => {
         expect(response.status).to.eq(200);
   
@@ -76,12 +76,29 @@ export class QueryApiService {
   
         for (const item of formDataArray) {
           if (item.query && item.query.id === queryId) {
-            return cy.wrap(item.query);
-            //return item.query[attribute];
+            return cy.wrap(item.query);           
+          }
+        }          
+      });
+    }
+
+    extractAllQueryIds(): Cypress.Chainable<string[]> {
+      return this.getQueries().then((response) => {
+        expect(response.status).to.eq(200);
+  
+        if (!response.body.data || !response.body.data.formData) {
+          return []; // Return an empty array if the response is invalid
+        }
+  
+        const queryIds: string[] = [];
+  
+        for (const item of response.body.data.formData) {
+          if (item.query && item.query.id) {
+            queryIds.push(item.query.id);
           }
         }
   
-        //return cy.wrap(null); // Query not found
+        return queryIds; // Return the plain JavaScript array
       });
     }
   }

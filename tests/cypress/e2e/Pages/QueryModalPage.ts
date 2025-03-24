@@ -105,6 +105,10 @@ class QueryModalPage {
     verifyQueryTextareaValue(expectedValue: string) {
         return this.getQueryTextareaValue().should('eq', expectedValue);
     }
+    verifyQueryTextareaEmpty() {
+      return this.getQueryTextareaValue().should('eq', '');
+  }
+
     verifyQueryDescriptionValue(expectedValue: string) {
         return this.getQueryDescriptionText().should('have.text', expectedValue);
     }

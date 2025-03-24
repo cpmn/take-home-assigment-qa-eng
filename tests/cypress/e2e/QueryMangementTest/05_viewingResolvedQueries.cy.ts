@@ -28,7 +28,7 @@ describe('User Story 5: Viewing Resolved Queries', () => {
     // Here implement to verify RESOLVED status in green
     // STATUS is black, need to investigate how to get the text color
     // Make the test case to fail.
-    expect(1).to.equal(2);    
+    expect("RESOLVED in Green").to.equal("RESOLVED in Black");    
   }); 
 
   it('should display modal dialog with title Pre-filled based on the question', () => {
@@ -58,12 +58,12 @@ describe('User Story 5: Viewing Resolved Queries', () => {
       // Here implement to verify resolution date
       // There is no Resolution Date on the UI, maybe UpdatedAt but this acceptance is ambiguous 
       // Make the test case to fail.
-      expect(1).to.equal(2);   
+      expect("Resolution date is visible").to.equal("There is no resolution date");   
     });
     it('should not display UI option/button to re-open or change the resolved status directly', () => {
         // Here implement to verify there is no UI option or button to re-epen or chnge the resolved status
         // Currently UI displays de Delete Button that re-open the status. BUG DETECTED
         // Make the test case to fail.
-        expect(1).to.equal(2);   
+        expect("Button re-open is not displayed").to.equal("Button Delete is present and reset the status");   
       });
 });

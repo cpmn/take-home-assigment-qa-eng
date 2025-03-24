@@ -36,7 +36,7 @@ describe('User Story 4: Resolving Queries', () => {
     // Here implement the message confirmation that query succesfully change to RESOLVED
     // NO implemented, BUG DETECTED.
     // Make the test case to fail since the message was not implemented.
-    expect(1).to.equal(2);    
+    expect("Confirmation: Query status succesfully change to RESOLVED").to.equal("");    
   }); 
   
 });
