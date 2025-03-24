@@ -30,7 +30,7 @@ describe('User Story 1: Viewing Data and Queries', () => {
 
   it('should display the table with correct headers', () => {
     queryManagerPage.getTable().should('be.visible');
-    queryManagerPage.getTableHeaderQuestion().should('have.text', 'Question New');
+    queryManagerPage.getTableHeaderQuestion().should('have.text', 'Question');
     queryManagerPage.getTableHeaderAnswer().should('have.text', 'Answer');
     queryManagerPage.getTableHeaderQueries().should('have.text', 'Queries');
   });
