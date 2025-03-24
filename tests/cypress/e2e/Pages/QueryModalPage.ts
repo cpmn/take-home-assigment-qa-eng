@@ -108,9 +108,13 @@ class QueryModalPage {
     verifyQueryDescriptionValue(expectedValue: string) {
         return this.getQueryDescriptionText().should('have.text', expectedValue);
     }
-    verifyQueryApdatedAt(date : Date){
-        return this.getQueryCreatedAt().should('eq', date);
-
+    verifyQueryApdatedAt(date : string){
+        return this.getQueryCreatedAt()
+        .invoke('text')
+        .then((text) => {
+            expect(text.trim()).to.eq(date);
+        });
+        //this.getQueryCreatedAt().should('eq', date);
     }
   }
   

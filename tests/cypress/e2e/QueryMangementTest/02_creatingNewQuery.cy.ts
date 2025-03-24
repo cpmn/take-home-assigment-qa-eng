@@ -29,7 +29,7 @@ describe('User Story 2: Creating a New Query', () => {
   });
 
   it('should add new query and change status to open', () => {
-     const rowIndex = 3;     
+     const rowIndex = 2;     
      queryManagerPage.clickAddQueryIcon(rowIndex);     
      queryModalPage.verifyModalIsVisible();
      // if we do not clear the text area, after the first time I add a query

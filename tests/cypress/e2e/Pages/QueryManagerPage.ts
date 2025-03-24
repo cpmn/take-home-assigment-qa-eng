@@ -137,7 +137,7 @@ class QueryManagerPage {
   }
 
   //Method to check the query icon title
-  checkQueryIconTitle(rowIndex: number, expectedTitle: string) {
+  verifyQueryIconTitle(rowIndex: number, expectedTitle: string) {
       return this.getQueryIconTitle(rowIndex).should('eq', expectedTitle);
   }
 
