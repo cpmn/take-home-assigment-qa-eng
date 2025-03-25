@@ -9,7 +9,7 @@ describe('UX/UI: Application should be responsive up to 560px', () => {
     cy.visit('/'); 
   });  
   
-  it('should query table is responsive with mobile viewport', () => {
+  it('Verify UI displays query table responsive with mobile viewport(320px)', () => {
     cy.viewport(320, 568); // Mobile viewport
     cy.reload(); // Reload the page after changing viewport.
     queryManagerPage.getTable().should('be.visible'); 
@@ -17,7 +17,7 @@ describe('UX/UI: Application should be responsive up to 560px', () => {
     queryManagerPage.getTableHeaderAnswer().should('have.text', 'Answer');
     queryManagerPage.getTableHeaderQueries().should('have.text', 'Queries');
   });
-  it('should verify add query icon exists with mobile viewport', () => {
+  it('Verify UI displays query table options responsive with mobile viewport(560px)', () => {
     cy.viewport(560, 750); // Mobile viewport
     cy.reload(); // Reload the page after changing viewport.    
     const rowIndex = 0;

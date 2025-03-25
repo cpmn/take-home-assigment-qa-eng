@@ -28,14 +28,14 @@ describe('User Story 1: Viewing Data and Queries', () => {
     cy.deleteAllQueriesCreated(idsToDelete);
   });
 
-  it('should display the table with correct headers', () => {
+  it('Verify display the table with correct headers', () => {
     queryManagerPage.getTable().should('be.visible');
     queryManagerPage.getTableHeaderQuestion().should('have.text', 'Question');
     queryManagerPage.getTableHeaderAnswer().should('have.text', 'Answer');
     queryManagerPage.getTableHeaderQueries().should('have.text', 'Queries');
   });
 
-  it('should verify row data', () => {
+  it('Verify all data is displayed in query table', () => {
     const rowIndex = 0;
     queryManagerPage.verifyRowExists(rowIndex);
     queryManagerPage.verifyQuestionText(
@@ -45,35 +45,35 @@ describe('User Story 1: Viewing Data and Queries', () => {
     queryManagerPage.verifyAnswerText(rowIndex, 'No');
   });
 
-  it('should verify add query icon exists', () => {
+  it('Verify add query icon exists', () => {
     const rowIndex = 2;
     queryManagerPage.verifyAddQueryIconExists(rowIndex);
-    queryManagerPage.verifyQueryIconTitle(rowIndex, 'Add Query');
+    queryManagerPage.verifyQueryIconTitle(rowIndex, 'Create Query');
   });
 
-   it('should verify open query icon exists', () => {
+   it('Verify open query icon exists', () => {
      const rowIndex = 0;
      queryManagerPage.verifyOpenQueryIconExists(rowIndex);
      queryManagerPage.verifyQueryIconTitle(rowIndex, 'Open Query');
    });
 
-  it('should verify resolved query icon exists', () => {
+  it('Verify resolved query icon exists', () => {
     const rowIndex = 1;
     queryManagerPage.verifyResolvedQueryIconExists(rowIndex);
     queryManagerPage.verifyQueryIconTitle(rowIndex, 'Resolved Query');
   });
 
-  it('should display the correct tooltip on hover of add query', () => {
+  it('Verify UI display the correct tooltip on hover of add query', () => {
     const rowIndex = 2;
     queryManagerPage.verifyQueryStatusCellTooltip(rowIndex, 'Add Query');
   });
 
-  it('should display the correct tooltip on hover of resolved query', () => {
+  it('Verify UI display the correct tooltip on hover of resolved query', () => {
      const rowIndex = 1;
      queryManagerPage.verifyQueryStatusCellTooltip(rowIndex, 'Resolved Query');
   });
 
-   it('should display the correct tooltip on hover of open query', () => {
+   it('Verify UI display the correct tooltip on hover of open query', () => {
       const rowIndex = 0;
       queryManagerPage.verifyQueryStatusCellTooltip(rowIndex, 'Open Query');
    });   

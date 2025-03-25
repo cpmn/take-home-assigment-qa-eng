@@ -23,7 +23,7 @@ describe('User Story 3: Viewing Existing Queries (Open Status)', () => {
     cy.deleteAllQueriesCreated(idsToDelete);
   }); 
   
-  it('should display query status as OPEN', () => {
+  it('Verify Open modal dialog display query with status as OPEN', () => {
     const rowIndex = 0;
     queryManagerPage.clickOpenQueryIcon(rowIndex);
     queryModalPage.verifyModalQueryStatusHaveText("OPEN");    
@@ -31,18 +31,18 @@ describe('User Story 3: Viewing Existing Queries (Open Status)', () => {
     queryManagerPage.verifyRowExists(rowIndex);    
   });
 
-  it('should display modal dialog with title Pre-filled based on the question', () => {
+  it('Verify Open modal dialog display title Pre-filled based on the question', () => {
     const rowIndex = 0;
     const text = queryManagerPage.getQuestionText(rowIndex);
     queryManagerPage.clickOpenQueryIcon(rowIndex);
     queryModalPage.verifyModalIsVisible();
     text.then((questionText) => {
-      queryModalPage.verifyModalTitleContains(questionText);
+      queryModalPage.verifyModalTitleHaveText(questionText);
       queryModalPage.clickCloseButton();
     });  
   });
 
-  it('should display description same as User-inputted text from query creation', () => {
+  it('Verify Open modal dialog display description same as User-inputted text from query creation', () => {
     const rowIndex = 0;
     queryManagerPage.clickOpenQueryIcon(rowIndex);
     queryModalPage.verifyQueryDescriptionValue("Test Query to Review");    
@@ -50,7 +50,7 @@ describe('User Story 3: Viewing Existing Queries (Open Status)', () => {
     queryManagerPage.verifyRowExists(rowIndex);    
   });
 
-  it('should display createdAt (date/time) capture from api', () => {
+  it('Verify Open modal dialog display createdAt (date/time)', () => {
     const rowIndex = 0;
     queryManagerPage.clickOpenQueryIcon(rowIndex);  
 
@@ -63,7 +63,7 @@ describe('User Story 3: Viewing Existing Queries (Open Status)', () => {
     queryManagerPage.verifyRowExists(rowIndex);    
   });
 
-  it('should display RESOLVED button', () => {
+  it('Verify Open modal dialog display Resolve button', () => {
     const rowIndex = 0;
     queryManagerPage.clickOpenQueryIcon(rowIndex);
     queryModalPage.verifyResolveQueryButtonIsVisible();

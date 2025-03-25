@@ -101,6 +101,22 @@ export class QueryApiService {
         return queryIds; // Return the plain JavaScript array
       });
     }
+
+    getFormDataIdByQuestion(question: string): Cypress.Chainable<string> {
+      return this.getQueries().then((response) => {
+        expect(response.status).to.eq(200);
+        
+        const formDataArray = response.body.data.formData;
+  
+        const formDataItem = formDataArray.find((item: any) => item.question === question);
+  
+        if (!formDataItem) {
+          throw new Error(`formData with question "${question}" not found.`);
+        }
+  
+        return formDataItem.id;
+      });
+    }
   }
   
   export default new QueryApiService();

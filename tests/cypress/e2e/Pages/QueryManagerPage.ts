@@ -74,7 +74,9 @@ class QueryManagerPage {
   }
 
   getQuestionText(rowIndex: number) {
-    return this.getQuestionCell(rowIndex).invoke('text');
+    return this.getQuestionCell(rowIndex).invoke('text').then((text) => {
+      return text.trim(); // Optional: trim whitespace
+    });
   }
 
   getAnswerText(rowIndex: number) {
