@@ -24,25 +24,25 @@ describe('User Story 5: Viewing Resolved Queries', () => {
   after(() => {
     cy.deleteAllQueriesCreated(idsToDelete);
   });
-  it('should clearly indicates "RESOLVED" status in green', () => {    
+  it('Verify Resolved modal dialog display status "RESOLVED" status in green', () => {    
     // Here implement to verify RESOLVED status in green
     // STATUS is black, need to investigate how to get the text color
     // Make the test case to fail.
     expect("RESOLVED in Green").to.equal("RESOLVED in Black");    
   }); 
 
-  it('should display modal dialog with title Pre-filled based on the question', () => {
+  it('Verify Resolved modal dialog display title Pre-filled based on the question', () => {
     const rowIndex = 1;
     const text = queryManagerPage.getQuestionText(rowIndex);
     queryManagerPage.clickResolvedQueryIcon(rowIndex);
     queryModalPage.verifyModalIsVisible();
     text.then((questionText) => {
-      queryModalPage.verifyModalTitleContains(questionText);
+      queryModalPage.verifyModalTitleHaveText(questionText);
       queryModalPage.clickCloseButton();
     });  
   });
 
-  it('should display description same as the captured from api', () => {
+  it('Verify Resolved modal dialog display the correct description', () => {
       const rowIndex = 1;
       queryManagerPage.clickResolvedQueryIcon(rowIndex);  
   
@@ -54,13 +54,13 @@ describe('User Story 5: Viewing Resolved Queries', () => {
       queryModalPage.clickCloseButton();
       queryManagerPage.verifyRowExists(rowIndex);    
     });
-    it('should display resolution date same as the captured from api', () => {
+    it('Verify Resolved modal dialog display the correct resolution date', () => {
       // Here implement to verify resolution date
       // There is no Resolution Date on the UI, maybe UpdatedAt but this acceptance is ambiguous 
       // Make the test case to fail.
       expect("Resolution date is visible").to.equal("There is no resolution date");   
     });
-    it('should not display UI option/button to re-open or change the resolved status directly', () => {
+    it('Verify UI should not display option/button to re-open or change the resolved status directly', () => {
         // Here implement to verify there is no UI option or button to re-epen or chnge the resolved status
         // Currently UI displays de Delete Button that re-open the status. BUG DETECTED
         // Make the test case to fail.

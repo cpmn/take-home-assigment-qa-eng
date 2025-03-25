@@ -22,7 +22,7 @@ describe('User Story 4: Resolving Queries', () => {
     cy.deleteAllQueriesCreated(idsToDelete);
   });   
   
-  it('should click Resolve button and sets the query status to "RESOLVED', () => {
+  it('Verify user can Resolve query from Resolve Model dialog and status change to "RESOLVED', () => {
     const rowIndex = 0;
     queryManagerPage.clickOpenQueryIcon(rowIndex);
     queryModalPage.verifyResolveQueryButtonIsVisible();
@@ -32,7 +32,7 @@ describe('User Story 4: Resolving Queries', () => {
     // NO implemented, BUG DETECTED.
     
   });  
-  it('should display confirmation that query succesfully change to RESOLVED', () => {    
+  it('Verify once the user Resolve the query a confirmation should be displayed in main page', () => {    
     // Here implement the message confirmation that query succesfully change to RESOLVED
     // NO implemented, BUG DETECTED.
     // Make the test case to fail since the message was not implemented.

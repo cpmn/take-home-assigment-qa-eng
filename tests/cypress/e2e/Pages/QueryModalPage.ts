@@ -63,12 +63,16 @@ class QueryModalPage {
     clickCloseButton() {
       return this.getCloseButton().click();
     }
-    verifyModalQueryStatusHaveText(text: string){
+    verifyModalQueryStatusHaveText(text: string){      
         return this.getQueryStatus().should('have.text', text);
     }
   
-    verifyModalTitleContains(text: string) {
-        return this.getModalTitle().should('contain.text', text);
+    verifyModalTitleHaveText(title: string) {
+      return this.getModalTitle()
+        .invoke('text')
+        .then((text) => {
+            expect(text.trim()).to.eq(title);
+        });        
     }
   
     verifyModalIsVisible() {

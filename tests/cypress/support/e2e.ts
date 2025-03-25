@@ -41,13 +41,19 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   }
 
   Cypress.Commands.add('addQueryWithFixture', (dataFixture: string) => {
-    cy.fixture(dataFixture).then((queryData) => {
-      queryApiService.createQuery(queryData).then((response) => {
-        expect(response.status).to.eq(200); 
-        cy.wrap(response.body); // Wrap the response body for further chaining if needed.
+    return cy.fixture(dataFixture).then((queryData) => {
+      return queryApiService.getFormDataIdByQuestion(queryData.title).then((formDataId) => {
+        const updatedQueryData = {
+          ...queryData,
+          formDataId: formDataId,
+        };
+        return queryApiService.createQuery(updatedQueryData).then((response) => {
+          expect(response.status).to.eq(200);
+          return cy.wrap(response.body);
+        });
       });
     });
-  });  
+  }); 
 
   Cypress.Commands.add('resolveQueryWithFixture', (queryId: string, dataFixture: string) => {
     cy.fixture(dataFixture).then((updateData) => {
